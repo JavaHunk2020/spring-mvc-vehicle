@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dao.ProfileDao;
-import com.dao.ProfileDaoImpl;
+import com.dao.SpringContainerService;
 
 @WebServlet("/deleteProfile")
 public class DeleteProfileServlet  extends HttpServlet{
@@ -22,8 +22,8 @@ public class DeleteProfileServlet  extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			String pusername=req.getParameter("username");
-			ProfileDao profileDao=new ProfileDaoImpl();
+			ProfileDao profileDao=SpringContainerService.getProfileDao();
 			profileDao.deleteByUsername(pusername);
- 		   req.getRequestDispatcher("profiles").forward(req, resp);
+ 		    req.getRequestDispatcher("profiles").forward(req, resp);
 	}
 }

@@ -4,22 +4,30 @@ import java.util.List;
 
 import com.servlet.dto.ProfileDTO;
 
-/**
- * 
- * @author javahunk
- * 
- *
- */
 public interface ProfileDao {
-	void deleteByUsername(String pusername);
-	ProfileDTO authUser(String pusername, String ppassword);
-	ProfileDTO findByUsername(String pusername);
-	List<ProfileDTO> findAll();
-	List<ProfileDTO> searchProfiles(String search);
-	String createSignup(ProfileDTO profileDTO);
-	List<ProfileDTO> sortProfiles(String sort);
+
+	void show();
+
 	String updateSignup(ProfileDTO profileDTO);
-	List<ProfileDTO> filterProfiles(String filterText);
+
+	String createSignup(ProfileDTO profileDTO);
+
+	List<ProfileDTO> sortProfiles(String sort);
+
 	List<String> findAllQualification();
-	ProfileDTO findByEmail(String email);
+
+	List<ProfileDTO> filterProfiles(String filterText);
+
+	List<ProfileDTO> searchProfiles(String search);
+
+	List<ProfileDTO> findAll();
+
+	ProfileDTO authUser(String pusername, String ppassword);
+
+	ProfileDTO findByEmail(String pemail);
+
+	ProfileDTO findByUsername(String pusername);
+
+	void deleteByUsername(String pusername);
+
 }

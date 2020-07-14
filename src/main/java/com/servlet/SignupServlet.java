@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dao.ProfileDao;
-import com.dao.ProfileDaoImpl;
+import com.dao.SpringContainerService;
 import com.servlet.dto.ProfileDTO;
 import com.servlet.utils.Utils;
 
@@ -27,7 +27,7 @@ public class SignupServlet  extends HttpServlet{
 		String photo=req.getParameter("photo");
 		String password =Utils.generateRandomPassword(5);
 		String username=email;
-		 ProfileDao profileDao=new ProfileDaoImpl();
+		ProfileDao profileDao=SpringContainerService.getProfileDao();
 		 ProfileDTO profileDTO=new  ProfileDTO(username, password, name, email, mobile, gender, photo, qualification);
 		 profileDao.createSignup(profileDTO);
 		  req.setAttribute("hmmmm", "Hi , "+name+" , you have done signup successfully!!!!!!!!!!!");

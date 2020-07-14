@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dao.ProfileDao;
 import com.dao.ProfileDaoImpl;
+import com.dao.SpringContainerService;
 import com.google.gson.Gson;
 import com.servlet.dto.ProfileDTO;
 
@@ -20,7 +21,7 @@ public class AjaxSearchProfileServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String email = req.getParameter("email");
-		ProfileDao profileDao = new ProfileDaoImpl();
+		ProfileDao profileDao = SpringContainerService.getProfileDao();
 		ProfileDTO profileDTO = profileDao.findByEmail(email);
 
 		// text/html

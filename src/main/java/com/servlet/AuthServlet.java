@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionBindingListener;
 
-import com.dao.ProfileDaoImpl;
+import com.dao.ProfileDao;
+import com.dao.SpringContainerService;
 import com.servlet.dto.ProfileDTO;
 
 @WebServlet("/auth")
@@ -22,7 +22,7 @@ public class AuthServlet  extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			String pusername=req.getParameter("username");
 			String ppassword=req.getParameter("password");
-			ProfileDaoImpl profileDao=new ProfileDaoImpl();
+			ProfileDao profileDao=SpringContainerService.getProfileDao();
 			ProfileDTO profileDTO=profileDao.authUser(pusername, ppassword);
 			if(profileDTO!=null) {
 			   //page->request-session-application	

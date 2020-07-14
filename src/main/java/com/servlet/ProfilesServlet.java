@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dao.ProfileDao;
-import com.dao.ProfileDaoImpl;
+import com.dao.SpringContainerService;
 import com.servlet.dto.ProfileDTO;
 
 @WebServlet("/profiles")
@@ -24,7 +24,7 @@ public class ProfilesServlet  extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//I need to fetch whole profiles data from database
-		  ProfileDao profileDao=new ProfileDaoImpl();
+		  ProfileDao profileDao=SpringContainerService.getProfileDao();
 		  List<ProfileDTO> profileDTOs=profileDao.findAll();
 		   //adding profileDTO object inside request scope with namemagic
 		   req.setAttribute("profileDTOs", profileDTOs);
