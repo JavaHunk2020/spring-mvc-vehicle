@@ -86,21 +86,10 @@ public class ProfileDaoImpl implements ProfileDao {
 	
 	@Override
 	public List<String> findAllQualification() {
-		List<String> qualifications = new ArrayList<>();
-		String sql = "select distinct qualification from user_login_tbl ";
-		try(Connection conn = datasource.getConnection();PreparedStatement pstmt = conn.prepareStatement(sql);ResultSet rs = pstmt.executeQuery();){
-			// Fire the query
-			// CTR+SHIFT+O
-			while (rs.next()) { // here user is there
-				String q = rs.getString(1);
-				qualifications.add(q);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		String sql = "select distinct qualification from user_login_tbl";
+		List<String> qualifications = jdbcTemplate.queryForList(sql,String.class);
 		return qualifications;
 	}
-	
 	
 	
 	@Override
