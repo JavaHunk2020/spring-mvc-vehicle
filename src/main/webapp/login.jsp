@@ -57,7 +57,7 @@
 </head>
 <body>
 	<header style="background-color: #03a9f4; height: 30px;">
-	   <b>Address : = ${applicationScope.address}</b> 
+	   <b>My Address : = ${applicationScope.address}</b> 
 	   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	 </header>
 	<div  class="container">
